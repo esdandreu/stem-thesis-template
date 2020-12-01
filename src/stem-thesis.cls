@@ -33,6 +33,28 @@
 % Fancy headers
 \usepackage{fancyhdr}
 
+%% Header styling -------------------------------------------------------------
+
+% Remove rulers around the chapter titles
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+% headers
+\fancyhead[LO,RE]{\hyperlink{contents}{\slshape \leftmark}}
+% \fancyhead[LE,RO]{}
+\fancyhead[LO,RE]{\hyperlink{contents}{\slshape \leftmark}}
+% Make chapter header line: N. <name>
+\renewcommand{\chaptermark}[1]{%
+  \markboth{%
+    \color{headergray}{%
+      \thechapter.\ #1%
+    }%
+  }{}%
+}
+
+% footers
+\fancyfoot[C]{}
+
 %% Title ----------------------------------------------------------------------
 
 % Parameters:
