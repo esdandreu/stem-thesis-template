@@ -1,0 +1,35 @@
+%% Not indexed content --------------------------------------------------------
+% Feel free to comment out and modify this section
+
+\begin{dedication}
+    \input{preface/dedication.tex}
+\end{dedication}
+
+\begin{abstract}
+    \input{preface/abstract.tex}
+\end{abstract}
+
+\begin{acknowledgments}
+    \input{preface/acknowledgements.tex}
+\end{acknowledgments}
+
+\begin{funding}
+    \input{preface/funding.tex}
+\end{funding}
+
+%% Contents, figures and tables -----------------------------------------------
+
+% Style the lists of contents, figures and tables
+\setlength{\cftbeforetoctitleskip}{2.0em}
+\setlength{\cftaftertoctitleskip}{1.0em}
+\setlength{\cftbeforeloftitleskip}{2.0em}  % LOF: List of figures
+\setlength{\cftbeforelottitleskip}{2.0em}  % LOT: List of tables
+\cftsetpnumwidth{0.75em}  % Prevent overfull hbox on TOC numbers.
+\hypersetup{linkcolor=black}  % Make TOC links black.
+\hypertarget{contents}{}
+
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables

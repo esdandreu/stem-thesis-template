@@ -1,17 +1,12 @@
-% -*- mode:LaTeX -*-
+\documentclass[12pt]{src/stem-thesis}
 
-%% Skeleton for a thesis.
-%%
-%% You should not need to mess around with this file unless you want to tinker.
+%% Import additional packages and header definitions
+% For the LaTex newbies, \input let's you introduce a .tex file as if it were
+% part of the current file
+\input{src/packages}
+\input{src/headers} % TODO Shouldn't be this inside .cls ?
 
-
-\documentclass[12pt]{stem_thesis}
-
-% All packages go in here
-\input{thesis-packages}
-\input{thesis-headers}
-
-% Page layout: approx 1" margins.
+%% Page layout: approx. 1" margins.
 \usepackage[
   reset,
   letterpaper,
@@ -25,114 +20,75 @@
   heightrounded,  % Round size of document.
 ]{geometry}
 
-% Un-comment this to show a black bar by overfull hboxes.
-%% \overfullrule=5pt
 
-% Macros and color definitions.
-\input{thesis-macros}
-\input{thesis-colors}
+%% Macros and colour definitions.
+\input{src/macros.tex}
+\input{src/colors.tex}
+
+% *****************************************************************************
+%                    Thesis configuration: Tweak this
+% *****************************************************************************
+%% Developer and debug options
+% \overfullrule=5pt % Un-comment this to show a black bar by overfull hboxes.
+
+%% Title parameters
+\title{My great thesis}
+\subtitle{So great it needs a second line} % Can be commented out
+\author{Andreu Giménez Bolinches}
+\supervisor{Andreu Giménez Bolinches} % Can be commented out
+\date{\today}
+\Year{\the\year{}}
+\logopath{src/placeholders/logo.png} % Can be commented out
+\organization{My university\\At my place} % Can be commented out
+\disclaimer{No robot was harmed writting this report} % Can be commented out
+% Copyright notice generated automatically from Year and author.
+\permission{All rights reserved.} % Can be commented out
+
+\committee{
+  Distinguished professor, \emph{chair} \\%
+  Distinguished professor \\%
+  Distinguished professor \\%
+  Distinguished professor, \emph{Distinguished University}%
+} % Can be commented out
+\keywords{Latex, Template, Science, Technology, Engineering, Mathematics}
 
 \begin {document}
+  % ***************************************************************************
+  %                              Front Matter
+  % ***************************************************************************
+  \frontmatter
+  \pagestyle{empty}
 
-\frontmatter
+  %% Build title 
+  \maketitle
 
-\pagestyle{empty}
+  %% Preface
+  % Includes acknowledgements, dedications, funding, tables of contents
+  % And tables of figures
+  \input{preface.tex}
 
-\input{thesis-title}
+  % ***************************************************************************
+  %                              Main Content
+  % ***************************************************************************
+  % Includes the introduction, body chapters and conclusions
+  \mainmatter
+  \pagestyle{thesis}
+  \hypersetup{linkcolor=documentLinkColor}
+  \input{content.tex}
 
-\support{}
-\disclaimer{}
+  % ***************************************************************************
+  %                              Appendices
+  % ***************************************************************************
+  \input{appendices.tex}
 
-% copyright notice generated automatically from Year and author.
-% permission added if \permission{} given.
-\permission{All rights reserved.}
-
-\maketitle
-
-\begin{dedication}
-\input{thesis-dedication}
-\end{dedication}
-
-\pagestyle{plain} % for toc, was empty
-
-% The content of the thesis is broken up into many individual files.
-\begin{abstract}
-\input{thesis-abstract.tex}
-\end{abstract}
-
-\begin{acknowledgments}
-\input{thesis-acknowledgments}
-\end{acknowledgments}
-
-\begin{funding}
-\input{thesis-funding}
-\end{funding}
-
-% Table of contents: Make links black, add a hyperlink target, and disable
-% microtype (as per the docs).
-\cleardoublepage
-
-% Set the space before & after header line for the Contents, List of tables,
-% List of figures. This is primarily to make the Contents will fit on two pages.
-\setlength{\cftbeforetoctitleskip}{3.0em}
-\setlength{\cftaftertoctitleskip}{2.0em}
-\setlength{\cftbeforeloftitleskip}{3.0em}  % LOF: List of figures
-%\setlength{\cftafterloftitleskip}{2.0em}  % For some reason leave this out.
-\setlength{\cftbeforelottitleskip}{3.0em}  % LOT: List of tables
-%\setlength{\cftafterlottitleskip}{2.0em}  % Same
-\cftsetpnumwidth{1.75em}  % Prevent overfull hbox on TOC numbers.
-
-\hypersetup{linkcolor=black}  % Make TOC links black.
-\hypertarget{contents}{}
-\microtypesetup{protrusion=false}
-\tableofcontents
-\chapternote{\hspace{-12pt}When this dissertation is viewed as a PDF, the page header is a link to this Table of Contents.}
-\clearpage
-\listoffigures
-\clearpage
-\listoftables
-\microtypesetup{protrusion=true}
+  % ***************************************************************************
+  %                              Bibliography
+  % ***************************************************************************
+  \backmatter
+  \singlespace
 
 
-% Main matter. Use
-\mainmatter
-\pagestyle{thesis}
+  % Be careful with reference files list, always avoid whitespaces!
+  \bibliography{bibliography/references}
 
-\hypersetup{linkcolor=documentLinkColor}  % Make links colorful again
-
-% ********************************************************************************
-%                                  Main Content
-% ********************************************************************************
-
-% Main content: 1.5 line spacing.
-\onehalfspace
-\input{thesis-main}
-
-\appendix
-\input{thesis-appendix}
-
-% ********************************************************************************
-%                                 Back Matter
-% ********************************************************************************
-
-\backmatter
-
-% Normal line spacing
-\singlespace
-
-% By default \bibsection is \chapter*, but we really want this to show
-% up in the table of contents and pdf bookmarks.
-\renewcommand{\bibsection}{\chapter{\bibname}}
-% Additionally, redefine the chapter header to remove the chapter number.
-\renewcommand{\chaptermark}[1]{%
-  \markboth{\color{headergray}{#1}}{}
-}
-
-
-%\newcommand{\bibpreamble}{This text goes between the ``Bibliography''
-%  header and the actual list of references}
-\bibliographystyle{plainnat}
-
-% No whitespace allowed in the reference files list, ever.
-\bibliography{bibliography/references}
 \end{document}
