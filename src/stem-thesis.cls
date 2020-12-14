@@ -1,21 +1,23 @@
 % Author: Andreu Gimenez Bolinches <esdandreu@gmail.com>
 % Adapted from Felix Duvallet's RI thesis template:
 % https://github.com/felixduvallet/ri-thesis-template
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{stem-thesis}
 
 \LoadClassWithOptions{book}
 
 %% Default packages setup -----------------------------------------------------
 % Appendix
-\usepackage{appendix}
+\RequirePackage{appendix}
 % Bibliography
-\usepackage[numbers,sort]{natbib}
+\RequirePackage[numbers,sort]{natbib}
 % Colors
-\usepackage{xcolor}  % Get extra colours.
+\RequirePackage{xcolor}  % Get extra colours.
 \colorlet{documentLinkColor}{blue}
 \colorlet{documentCitationColor}{black!80}
 \definecolor{headergray}{rgb}{0.5,0.5,0.5}
 % Hyperlinks
-\usepackage[backref,
+\RequirePackage[backref,
         pageanchor=true,
         plainpages=false,
         pdfpagelabels,
@@ -29,9 +31,9 @@
      urlcolor = documentLinkColor,
 }
 % Figures
-\usepackage{graphicx}
+\RequirePackage{graphicx}
 % Fancy headers
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 
 %% Header styling -------------------------------------------------------------
 
@@ -110,7 +112,7 @@
         \begin{center}
           {\huge \strut \bf \@title\par}
           \smallskip
-          {\large \strut \@subtitle\par}
+          \@ifundefined{@subtitle}{}{\large \strut \@subtitle\par}
           \bigskip
           {\large \begin{tabular}[t]{c}\@author\end{tabular}\par}
           \vfill
