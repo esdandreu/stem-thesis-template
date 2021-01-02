@@ -9,26 +9,24 @@
 %% Default packages setup -----------------------------------------------------
 % Appendix
 \RequirePackage{appendix}
-% Bibliography
-\RequirePackage[numbers,sort]{natbib}
 % Colors
 \RequirePackage{xcolor}  % Get extra colours.
 \colorlet{documentLinkColor}{blue}
 \colorlet{documentCitationColor}{black!80}
 \definecolor{headergray}{rgb}{0.5,0.5,0.5}
 % Hyperlinks
-\RequirePackage[backref,
-        pageanchor=true,
-        plainpages=false,
-        pdfpagelabels,
-        bookmarks,
-        bookmarksnumbered,
+\RequirePackage[
+  pageanchor=true,
+  plainpages=false,
+  pdfpagelabels,
+  bookmarks,
+  bookmarksnumbered,
 ]{hyperref}
 \hypersetup{
-     colorlinks = true,
-     citecolor = documentCitationColor,
-     linkcolor = documentLinkColor,
-     urlcolor = documentLinkColor,
+  colorlinks = true,
+  citecolor = documentCitationColor,
+  linkcolor = documentLinkColor,
+  urlcolor = documentLinkColor,
 }
 % Figures
 \RequirePackage{graphicx}
@@ -206,17 +204,6 @@
   \begin{pseudochapter}{Funding}}{\end{pseudochapter}
 }
 
-%% Bibliogragpy ---------------------------------------------------------------
-
-% By default \bibsection is \chapter*, but we really want this to show
-% up in the table of contents and pdf bookmarks.
-\renewcommand{\bibsection}{\chapter{\bibname}}
-% Additionally, redefine the chapter header to remove the chapter number.
-\renewcommand{\chaptermark}[1]{%
-  \markboth{\color{headergray}{#1}}{}
-}
-\bibliographystyle{plainnat}
-
 %% Page styles ----------------------------------------------------------------
 
 \fancypagestyle{plain}{%
@@ -230,88 +217,3 @@
   \fancyhead[RO,LE]{\hyperlink{contents}{\slshape \leftmark}}
   \fancyfoot[RO,LE]{\thepage}%
 }
-
-
-%% What follows is just style preferences
-% most things are shamelessly ripped from various conference class files
-
-%                       Utilities
-%                       ---------
-
-
-% \newcommand{\centeroncapheight}[1]{%
-%   {\setbox\@tempboxa = \hbox{#1}%
-%    \@measurecapheight{\@tempdima}%         % Calculate ht(CAP) - ht(text)
-%    \advance \@tempdima by -\ht\@tempboxa   %           ------------------
-%    \divide \@tempdima by 2                 %                   2
-%    \raise \@tempdima \box\@tempboxa}}
-
-% \newbox{\@measbox}
-
-% \def \@measurecapheight #1{%                            {\dimen}
-%   \setbox\@measbox = \hbox{ABCDEFGHIJKLMNOPQRSTUVWXYZ}%
-%   #1 = \ht\@measbox}
-
-% \long\def \@titlefootnote #1#2{%
-%   \insert\footins{%
-%     \reset@font\footnotesize
-%     \interlinepenalty\interfootnotelinepenalty
-%     \splittopskip\footnotesep
-%     \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
-%     \hsize\columnwidth \@parboxrestore
-% %%%    \protected@edef\@currentlabel{%
-% %%%       \csname p@footnote\endcsname\@thefnmark}%
-%     \color@begingroup
-%       \def \@makefnmark {$^{#1}$}%
-%       \@makefntext{%
-%         \rule\z@\footnotesep\ignorespaces#2\@finalstrut\strutbox}%
-%     \color@endgroup}}
-
-% %                       Lists
-% %                       -----
-
-% \setlength{\topsep}{1pt}
-%  \setlength{\itemsep}{1pt}
-% \setlength{\parsep}{3pt}
-
-% \renewcommand{\labelitemi}{{\small \centeroncapheight{\textbullet}}}
-% \renewcommand{\labelitemii}{\centeroncapheight{\rule{2.5pt}{2.5pt}}}
-% \renewcommand{\labelitemiii}{$-$}
-% \renewcommand{\labelitemiv}{{\Large \textperiodcentered}}
-
-% \renewcommand{\@listi}{%
-%   \leftmargin = \leftmargini
-%   \listparindent = 0pt}
-
-% \let \@listI = \@listi
-
-% \renewcommand{\@listii}{%
-%   \leftmargin = \leftmarginii
-%   \topsep = 1pt
-%   \labelwidth = \leftmarginii
-%   \advance \labelwidth by -\labelsep
-%   \listparindent = \parindent}
-
-% \renewcommand{\@listiii}{%
-%   \leftmargin = \leftmarginiii
-%   \labelwidth = \leftmarginiii
-%   \advance \labelwidth by -\labelsep
-%   \listparindent = \parindent}
-
-% \renewcommand{\@listiv}{%
-%   \leftmargin = \leftmarginiv
-%   \labelwidth = \leftmarginiv
-%   \advance \labelwidth by -\labelsep
-%   \listparindent = \parindent
-% }
-
-% % mainmatter is ignoring openany, fix
-% \renewcommand\mainmatter{%
-%   \if@openright
-%     \cleardoublepage
-%   \else
-%     \clearpage
-%   \fi
-%   \@mainmattertrue
-%   \pagenumbering{arabic}
-% }

@@ -1,3 +1,4 @@
+% !TeX root = ./thesis.tex
 \documentclass[12pt]{src/stem-thesis}
 
 %% Import additional packages and header definitions
@@ -29,6 +30,10 @@
 % *****************************************************************************
 %% Developer and debug options
 % \overfullrule=5pt % Un-comment this to show a black bar by overfull hboxes.
+
+%% Bibliography
+% Be careful with reference files list, always avoid whitespaces!
+\addbibresource{bibliography/references.bib}
 
 %% Title parameters
 \title{My great thesis}
@@ -64,7 +69,9 @@
   %% Preface
   % Includes acknowledgements, dedications, funding, tables of contents
   % And tables of figures
-  \input{preface.tex}
+  \IfFileExists{./preface.tex}{
+    \input{preface.tex}
+  }
 
   % ***************************************************************************
   %                              Main Content
@@ -78,16 +85,19 @@
   % ***************************************************************************
   %                              Appendices
   % ***************************************************************************
-  \input{appendices.tex}
+  \IfFileExists{./appendices.tex}{
+    \appendix
+    \input{appendices}
+    \clearpage
+  }
 
   % ***************************************************************************
   %                              Bibliography
   % ***************************************************************************
   \backmatter
   \singlespace
-
-
-  % Be careful with reference files list, always avoid whitespaces!
-  \bibliography{bibliography/references}
-
+  \printbibliography[
+    heading=bibintoc,
+    title={Bibliography}
+  ]
 \end{document}
