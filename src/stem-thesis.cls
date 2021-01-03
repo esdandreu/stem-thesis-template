@@ -2,7 +2,7 @@
 % Adapted from Felix Duvallet's RI thesis template:
 % https://github.com/felixduvallet/ri-thesis-template
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{stem-thesis}
+\ProvidesClass{src/stem-thesis}
 
 \LoadClassWithOptions{book}
 
@@ -40,9 +40,8 @@
 \renewcommand{\footrulewidth}{0.0pt}
 
 % headers
-\fancyhead[LO,RE]{\hyperlink{contents}{\slshape \leftmark}}
-% \fancyhead[LE,RO]{}
-\fancyhead[LO,RE]{\hyperlink{contents}{\slshape \leftmark}}
+\fancyhead[LO,R]{\hyperlink{contents}{\slshape \leftmark}}
+\fancyhead[LO,R]{\hyperlink{contents}{\slshape \leftmark}}
 % Make chapter header line: N. <name>
 \renewcommand{\chaptermark}[1]{%
   \markboth{%
