@@ -1,4 +1,4 @@
-%% Bibliography packages recommended for biblatex
+%% Bibliography packages recommended for biblatex -----------------------------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -9,12 +9,23 @@
     sorting=ynt
 ]{biblatex}
 
-%% Essential packages
+%% Essential packages ---------------------------------------------------------
+
 % Diagrams and \foreach
 \usepackage{tikz}
+
 % Subfigures
 \usepackage{caption}
 \usepackage[list=true,listformat=simple]{subcaption}
+
+% Table of contents
+\usepackage{tocloft}  % Set TOC options.
+\setlength{\cftbeforetoctitleskip}{2.0em}
+\setlength{\cftaftertoctitleskip}{1.0em}
+\setlength{\cftbeforeloftitleskip}{2.0em}  % LOF: List of figures
+\setlength{\cftbeforelottitleskip}{2.0em}  % LOT: List of tables
+\cftsetpnumwidth{0.75em}  % Prevent overfull hbox on TOC numbers.
+
 % File system
 % https://ftp.gust.org.pl/TeX/macros/latex/contrib/currfile/currfile.pdf
 \usepackage{currfile}
@@ -24,7 +35,6 @@
 \usepackage{amsfonts}
 \usepackage{setspace}
 \usepackage{layout}
-% \usepackage[subfigure]{tocloft}  % Set TOC options.
 
 % \usepackage[format=hang]{subfig}  % Do not include caption package in here.
 \usepackage{algorithm}
